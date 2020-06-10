@@ -23,6 +23,19 @@ app.get("/speak/:animal", function (req, res) {
     var sound =sounds[animal];
     res.send("The " + animal + " says '" + sound + "'");
 });
-
+// Third route
+app.get("/repeat/:message/:times", function(req, res){
+    var message = req.params.message;
+    var times = Number(req.params.times);
+//loop
+    for (var i = 0; i < times; i++) {
+        results += message + " ";
+    }
+    res.send(results);
+});
+// Forth route the kecth all route when you enter wrong route
+app.get("*", function(req, res){
+ res.send("Sorry page to found check your route...");
+});
  
 app.listen(PORT);
